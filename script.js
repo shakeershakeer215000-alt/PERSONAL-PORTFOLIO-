@@ -28,7 +28,7 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 
 // The form opens the visitor's email application. Set your public email below
 // before publishing if you want messages to be sent to a real inbox.
-const portfolioEmail = ''; // Example: 'hello@example.com'
+const portfolioEmail = 'shakeershakeer215000@gmail.com';
 const contactForm = document.querySelector('#contact-form');
 const formNote = document.querySelector('#form-note');
 
