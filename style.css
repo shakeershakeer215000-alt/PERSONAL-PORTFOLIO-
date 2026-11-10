@@ -6,3 +6,60 @@
 @keyframes learningShimmer{to{background-position:220% center}}
 @keyframes learningFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 @keyframes caretBlink{to{opacity:0}}
+
+
+/* Enhanced glowing animation for the Learning in Progress section */
+.education-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  animation: educationGlow 3.2s ease-in-out infinite;
+}
+.education-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(from var(--glow-angle, 0deg), #9b7bff, #62dcf5, #a58aff, #62dcf5, #9b7bff);
+  opacity: .72;
+  filter: blur(13px);
+  animation: glowRotate 6s linear infinite;
+}
+.education-card::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(145deg, rgba(26,34,57,.97), rgba(13,18,33,.98));
+}
+.learning-title {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-shadow: 0 0 10px rgba(165,138,255,.45), 0 0 24px rgba(98,220,245,.24);
+}
+.learning-title span {
+  background: linear-gradient(90deg, #fff 0%, #b9a5ff 25%, #62dcf5 50%, #fff 75%, #b9a5ff 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: learningShimmer 2.8s linear infinite, learningFloat 2.2s ease-in-out infinite, learningGlowText 2s ease-in-out infinite alternate;
+}
+@keyframes educationGlow {
+  0%, 100% { box-shadow: 0 0 16px rgba(155,123,255,.13), 0 0 34px rgba(98,220,245,.08); }
+  50% { box-shadow: 0 0 27px rgba(155,123,255,.32), 0 0 58px rgba(98,220,245,.2); }
+}
+@keyframes glowRotate { to { transform: rotate(360deg); } }
+@keyframes learningGlowText {
+  from { filter: drop-shadow(0 0 2px rgba(165,138,255,.35)); }
+  to { filter: drop-shadow(0 0 9px rgba(98,220,245,.85)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .education-card, .education-card::before, .learning-title span {
+    animation: none !important;
+  }
+}
